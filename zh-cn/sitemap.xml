@@ -15,10 +15,29 @@
                 href="https://sisuben.github.io/"
                 />
   </url><url>
+    <loc>https://sisuben.github.io/tags/first-blog/</loc>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
+  </url><url>
     <loc>https://sisuben.github.io/p/new111/</loc>
     <lastmod>2025-04-26T23:58:36+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/post/</loc>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
+  </url><url>
+    <loc>https://sisuben.github.io/tags/</loc>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sisuben.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sisuben.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://sisuben.github.io/tags/test/</loc>
     <lastmod>2025-04-26T23:58:36+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/p/myblog/</loc>
@@ -40,18 +59,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://sisuben.github.io/categories/"
-                />
-  </url><url>
-    <loc>https://sisuben.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sisuben.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://sisuben.github.io/tags/"
                 />
   </url><url>
     <loc>https://sisuben.github.io/categories/test/</loc>
