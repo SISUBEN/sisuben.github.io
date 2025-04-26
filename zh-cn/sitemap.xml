@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sisuben.github.io/</loc>
-    <lastmod>2025-04-26T03:07:57+08:00</lastmod>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,10 +15,13 @@
                 href="https://sisuben.github.io/"
                 />
   </url><url>
-    <loc>https://sisuben.github.io/p/myblog/</loc>
-    <lastmod>2025-04-26T03:07:57+08:00</lastmod>
+    <loc>https://sisuben.github.io/p/new111/</loc>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/post/</loc>
+    <lastmod>2025-04-26T23:58:36+08:00</lastmod>
+  </url><url>
+    <loc>https://sisuben.github.io/p/myblog/</loc>
     <lastmod>2025-04-26T03:07:57+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/categories/</loc>
