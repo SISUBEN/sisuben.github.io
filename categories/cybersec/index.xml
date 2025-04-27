@@ -31,7 +31,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;解题步骤&#34;&gt;&lt;strong&gt;解题步骤&lt;/strong&gt;
-&lt;/h2&gt;&lt;h2 id=&#34;0x01&#34;&gt;0x01
+&lt;/h2&gt;&lt;h2 id=&#34;0x01-初步分析&#34;&gt;0x01 初步分析
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;使用&lt;code&gt;file&lt;/code&gt;命令检查文件类型&lt;/p&gt;
@@ -74,6 +74,9 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;发现flag格式&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;0x02-静态分析&#34;&gt;0x02 静态分析
+&lt;/h2&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;用IDA打开反编译程序，重命名部分变量。发现flag是由四个十六进制数字组成的&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/p/re-rechall-writeup/images/2.jpg&#34;
@@ -213,6 +216,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;0x03-编写解密脚本&#34;&gt;0x03 编写解密脚本
+&lt;/h2&gt;&lt;ol start=&#34;7&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;开始编写脚本&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -404,9 +410,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;得到最终flag &lt;code&gt;flag{e7f8f02a-90a38781-054d1c1b-0ddf83d6}&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;0x04-flag&#34;&gt;0x04 Flag!
+&lt;/h2&gt;&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;得到最终flag &lt;code&gt;flag{e7f8f02a-90a38781-054d1c1b-0ddf83d6}&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
