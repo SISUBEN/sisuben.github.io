@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sisuben.github.io/</loc>
-    <lastmod>2025-04-27T19:35:37+08:00</lastmod>
+    <lastmod>2025-07-29T18:38:09+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,12 @@
                 hreflang="zh-cn"
                 href="https://sisuben.github.io/"
                 />
+  </url><url>
+    <loc>https://sisuben.github.io/p/re-stretching-writeup/</loc>
+    <lastmod>2025-07-29T18:38:09+08:00</lastmod>
+  </url><url>
+    <loc>https://sisuben.github.io/post/</loc>
+    <lastmod>2025-07-29T18:38:09+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/p/re-rechall-writeup/</loc>
     <lastmod>2025-04-27T19:35:37+08:00</lastmod>
@@ -35,9 +41,6 @@
     <lastmod>2025-04-27T19:35:37+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/tags/cybersec/</loc>
-    <lastmod>2025-04-27T19:35:37+08:00</lastmod>
-  </url><url>
-    <loc>https://sisuben.github.io/post/</loc>
     <lastmod>2025-04-27T19:35:37+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/categories/reverse/</loc>
