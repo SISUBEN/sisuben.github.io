@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2025 imaginaryCTF rev/questionably-distributed">
+<title>Wp</title>
+
+<link rel='canonical' href='https://sisuben.github.io/p/wp/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Wp">
+<meta property='og:description' content="2025 imaginaryCTF rev/questionably-distributed">
+<meta property='og:url' content='https://sisuben.github.io/p/wp/'>
+<meta property='og:site_name' content='SISUBENY&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cybersec' /><meta property='article:tag' content='reverse' /><meta property='article:tag' content='writeup' /><meta property='article:tag' content='medium' /><meta property='article:published_time' content='2025-09-21T17:56:23&#43;08:00'/><meta property='article:modified_time' content='2025-09-21T17:56:23&#43;08:00'/>
+<meta name="twitter:title" content="Wp">
+<meta name="twitter:description" content="2025 imaginaryCTF rev/questionably-distributed">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/ff_hu_c58b0071503eabe0.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">⏰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">SISUBENY&#39;s Blog</a></h1>
+            <h2 class="site-description">SISUBENY&#39;s Blog</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/397853550'
+                        target="_blank"
+                        title="BiliBili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6z" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/SISUBEN'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sisuben.github.io/en/" >English</option>
+                                
+                                    <option value="https://sisuben.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#for-the-a1--2-sub-server-mode">For the <code>a1 == 2</code> sub server mode</a></li>
+    <li><a href="#logic-of-sub-services">Logic of sub services</a></li>
+    <li><a href="#solve">Solve</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cybersec/" >
+                Cybersec
+            </a>
+        
+            <a href="/categories/reverse/" >
+                Reverse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/wp/">Wp</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            2025 imaginaryCTF rev/questionably-distributed
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 21, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="revquestionably-distributed">rev/questionably-distributed
+</h1><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Distributed computing is the new tech on the horizon, so I decided to distribute the computer itself. Enjoy this horrendous simulation of a CPU running locally over TCP.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The attachment is a x64 executable file.</p>
+<p><img src="/images/1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="1"
+	
+	
+></p>
+<p>When you run the <code>chal.exe</code>, it appears following behavior:</p>
+<ul>
+<li>
+<p>Determine the following condition in <code>sub_140002256()</code></p>
+<ul>
+<li>If argument a1 == 1 then enter main server mode</li>
+<li>If argument a1 == 2 then enter sub server mode</li>
+</ul>
+</li>
+<li>
+<p>This are the following behavior that when the program enter main server mode. First, start several subprocesses <code>chall.exe</code> and pass arguments <code>5555,6666,7777</code> respectively</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> $ chal.exe
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> $ tasklist | findstr chal  
+</span></span><span class="line"><span class="cl">chal.exe                     66444 Console                    9      3,432 K
+</span></span><span class="line"><span class="cl">chal.exe                      5620 Console                    9      3,432 K
+</span></span><span class="line"><span class="cl">chal.exe                     28684 Console                    9      3,432 K
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p>Then, build connection with three TCP port.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">mov</span>     <span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="mi">290</span><span class="n">h</span><span class="o">+</span><span class="n">var_14</span><span class="p">],</span> <span class="n">eax</span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span>     <span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="mi">290</span><span class="n">h</span><span class="o">+</span><span class="n">var_8</span><span class="p">],</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">jmp</span>     <span class="n">loc_14000230E</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>After that, <code>Sleep(500)</code></p>
+</li>
+<li>
+<p>Enter a double for-loop</p>
+<ol>
+<li>Send coordinate to port 5555</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">sprintf</span><span class="p">(</span><span class="n">Str</span><span class="p">,</span> <span class="s">&#34;%d %d&#34;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v3</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">Str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">send</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Str</span><span class="p">,</span> <span class="n">v3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Receive the result from port 6666</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">recv</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>And the result value is sent to port 7777 and execute <code>v40 ^ 66</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">sscanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">v40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sprintf</span><span class="p">(</span><span class="n">Str</span><span class="p">,</span> <span class="s">&#34;%d %d ^&#34;</span><span class="p">,</span> <span class="n">v40</span><span class="p">,</span> <span class="mi">66</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v4</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">Str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">send</span><span class="p">(</span><span class="n">v43</span><span class="p">,</span> <span class="n">Str</span><span class="p">,</span> <span class="n">v4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>Receive the result from port 6666 and add <code>v40</code> by 1 and send it to port 7777</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">recv</span><span class="p">(</span><span class="n">v43</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sscanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">v40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sprintf</span><span class="p">(</span><span class="n">Str</span><span class="p">,</span> <span class="s">&#34;%d %d +&#34;</span><span class="p">,</span> <span class="n">v40</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v5</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">Str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">send</span><span class="p">(</span><span class="n">v43</span><span class="p">,</span> <span class="n">Str</span><span class="p">,</span> <span class="n">v5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>Finally receive the result from port 7777 and pass to <code>v40</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">recv</span><span class="p">(</span><span class="n">v43</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sscanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Command</span><span class="p">,</span> <span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">v40</span><span class="p">);</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>Et cetera</li>
+</ol>
+</li>
+</ol>
+<h2 id="for-the-a1--2-sub-server-mode">For the <code>a1 == 2</code> sub server mode
+</h2><ul>
+<li>Parse the port number passed in <code>a2</code></li>
+<li>If 5555 then start byte matrix service at <code>sub_140001687</code></li>
+<li>If 6666 then start arithmetic operation service <code>sub_140001A42</code></li>
+<li>If 7777 then start comparison operation service <code>sub_140001E45</code></li>
+<li>Otherwise, return an error</li>
+</ul>
+<h2 id="logic-of-sub-services">Logic of sub services
+</h2><ol>
+<li>
+<p><code>sub_140001687</code> (Comparison Operation Service)</p>
+<ul>
+<li>
+<p>Port: 5555</p>
+</li>
+<li>
+<p>Receive: <code>&quot;&lt;a&gt; &lt;b&gt; &lt;op_code&gt;&quot;</code></p>
+</li>
+<li>
+<p>Remark: <code>opcode</code> only accept <code>&quot;&lt;&quot;, &quot;&gt;&quot;, &quot;=&quot;</code></p>
+</li>
+<li>
+<p>Return: the boolean of comparison</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>sub_140001A42</code> (Arithmetic Operation Service)</p>
+<ul>
+<li>Port: 6666</li>
+<li>Receive: <code>&quot;&lt;a&gt; &lt;b&gt; &lt;op_code&gt;&quot;</code></li>
+<li>Remark: <code>opcode</code> only accept <code>&quot;+&quot;, &quot;-&quot;, &quot;^&quot;</code></li>
+<li>Return: the result of arithmetic operation</li>
+</ul>
+</li>
+<li>
+<p><code>sub_140001687</code> (Byte Matrix Service)</p>
+<ul>
+<li>Port: 5555</li>
+<li>Receive: <code>&quot;&lt;x&gt; &lt;y&gt;&quot;</code></li>
+<li>Remark: which x and y are integer coordinate</li>
+<li>Return: <code>byte_140010020[28 * x + y]</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="solve">Solve
+</h2><p>So, we our aim is to extract the data from <code>byte_140010020</code> to restore the algorithm.</p>
+<p>the final transformation is <code>result[k][m] = ( M[k][m] ^ 66 ) + 15</code></p>
+<p>solve script:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">transform_matrix</span><span class="p">(</span><span class="n">data_bytes</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">28</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">val</span> <span class="o">=</span> <span class="n">data_bytes</span><span class="p">[</span><span class="mi">28</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="n">m</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">matrix</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span> <span class="o">^</span> <span class="mi">66</span><span class="p">)</span> <span class="o">+</span> <span class="mi">15</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">matrix</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">print_matrix_as_ascii</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="mi">32</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">126</span> <span class="k">else</span> <span class="s1">&#39;.&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">raw_data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s1">&#39;64429F81C37D3C077610F19F68E00B8785820CC794A484BF3497C11A09607A00BA1A817D97BD840ECD75AD3656B8BDDB3BCAA2CF6E278FA2BE501DC7C837C782514800E90684F7D3FAA409505CC72B9791CD67FFF4F6A11A465E7A0E964190E78A90D09015C7630F6B6D5FC8348A5FC557C6C44C1F65FE02C478105ABAA141443112D446D9375545A4B40DD83E6C9D963366E2EFC7E0F28B5902E513A32657D5382B1B12627157072564DF64D07D1203DEDCF3A5BCE53015E715288B3C7F6074AA7B860DECDD141241F376677070154F4C08F408ED251ED53A466076C6C0EB703B717D284F913A9003B0A2F520B8446CC03974AE5E928398D9E30F9FA3FA0FDE6B8D06BA1E034BA3F0ED9910A5DD7C6616F1147483970D5C7A1CFB1D160BFB81980212B642875A3374F3431AD0C080E7B1945B342B6891A5848CC29A97BD1C1CBF58E602DF40355333786D0338EDEAE981461EACAEAF51333B13CDD324E9029041E8922028C7745B40E15F78CF4962508F80FD3E2F4E716A621F3D332840C36928568A511DFEAC5DDF0BD6AE5538FFE4B8FC22E74A936AACD28FDFFACFA363F7F9ED4816EBF574CB004A795582783A3A745C2160F0726BC2014BBCD0EE1FC8E70D10FDF80571C306BB3D5B3DB595772A2398E9E20B54A40C9F60DD8D7FA5748CB57285BBE348C19F851CDC3BB21F65A4EC4E86F7A22A04428AE1CF098644963BB61BF69963B738E9D415668669892A55D7B04D79DA51BB64328B6DB8CF03F3851EEA1E82A1576B126C8FFBD518252AEFD57768AFC82413FAAF81B27E84A603A3902125316490A7E41FA2B937C8E4269D5B8E4D24B2601E61E1D1DF6677E209070466387CBEDF61DD821A144AFE3AE75AC8347E7B959CDC766DBCDCE49EE521A213241FD10380AE859AC2CF99FCB7F3C5EB7140800D1CF77BD8D35F25B94B19CC6F389E72B84CF8530FC7EC0B7EDFD06A5010EA5D2DE1D80560387C6E83963AF2CED86487255CDA3424C63FA2A5100CF520F7524DD816538D63CFFBE66536D8340E3CBB33999567BD5BA75F00B76CF5D76347663B7278C9D547C4BBADFA93E109D09C3C6931A4268C4B858C02F181D964&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">matrix</span> <span class="o">=</span> <span class="n">transform_matrix</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">print_matrix_as_ascii</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Result:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">5....N.TCa..9.X...]........g
+</span></span><span class="line"><span class="cl">Z1GQ.g.N...[.F..#.......;t..
+</span></span><span class="line"><span class="cl">.!n.....&#34;.Q.S.....Z!-.x...4.
+</span></span><span class="line"><span class="cl">...g.+G[........f.0\8&gt;,...,.
+</span></span><span class="line"><span class="cl">$...l6.O.Ia&#39;....._....&amp;...^.
+</span></span><span class="line"><span class="cl">.=...3......*O.`.s$..xh_/B$T
+</span></span><span class="line"><span class="cl">v5.5.N_P.......f.fy..L1E.H.^
+</span></span><span class="line"><span class="cl">..e_..C4AAf..Y.Y.vk...1C...A
+</span></span><span class="line"><span class="cl">.BNy....P...q..=..E.+.....\.
+</span></span><span class="line"><span class="cl">..\.8.S.kP.....a..M3c.eE..^-
+</span></span><span class="line"><span class="cl">Gm.ncX...O_...&#39;.E..g......(.
+</span></span><span class="line"><span class="cl">x9........mm.).O... .I&gt;P....
+</span></span><span class="line"><span class="cl">..k...&#34;..`..u.O....qy.E(..,I
+</span></span><span class="line"><span class="cl">../!....|.B7/l..y..:y#.&#34;n...
+</span></span><span class="line"><span class="cl">.X..&amp;.....o...7.......0....c
+</span></span><span class="line"><span class="cl">..E.Q.J&amp;.I..E-r1.?8.R....l..
+</span></span><span class="line"><span class="cl">^a..VB.S..(...Dwp...X%.].1..
+</span></span><span class="line"><span class="cl">L.E..?.......m...l6......wU.
+</span></span><span class="line"><span class="cl">...Z.....h..0....f3.:.w&amp;...J
+</span></span><span class="line"><span class="cl">.&#34;.5..&gt;..P..k.k..$8_=...ivw.
+</span></span><span class="line"><span class="cl">.D9..u`....K..P..rv.5...l...
+</span></span><span class="line"><span class="cl">..s.(..u.1k2...3D.ZTU3.M..2.
+</span></span><span class="line"><span class="cl">.ge....&#39;..KH...C&gt;.....r.`ul.
+</span></span><span class="line"><span class="cl">P............B..^m.H..,v..j.
+</span></span><span class="line"><span class="cl">&lt;..?... \..XK..7!a..~..V1.M;
+</span></span><span class="line"><span class="cl">......5.v-..u....a].q....c .
+</span></span><span class="line"><span class="cl">0...6...[.....4.(.,Q.=..0.3.
+</span></span><span class="line"><span class="cl">?I.........Z...:..s....O...5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>You can find suspicious strings on the diagonal lines</p>
+<p><code>51ngl3_4PP_mul71pl3_53rv1c35</code></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cybersec/">Cybersec</a>
+        
+            <a href="/tags/reverse/">Reverse</a>
+        
+            <a href="/tags/writeup/">Writeup</a>
+        
+            <a href="/tags/medium/">Medium</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/re-stretching-writeup/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Re] Stretching Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/re-rechall-writeup/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Re] Rechall Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 SISUBENY
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
