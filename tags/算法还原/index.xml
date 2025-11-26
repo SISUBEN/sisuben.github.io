@@ -16,7 +16,8 @@
         <description>&lt;h2 id=&#34;stretching---writeup&#34;&gt;Stretching - Writeup
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;more detail pls refer to &lt;a class=&#34;link&#34; href=&#34;https://github.com/SISUBEN/writeups/blob/main/stretching-writeup/writeup.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;My Github&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;My Github&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;0x1&#34;&gt;0x1
 &lt;/h3&gt;&lt;p&gt;Frist, when we run this program and see &amp;ldquo;Error opening file! Error code: &amp;quot;
 , so we find string &lt;code&gt;Error opening file! Error code:&lt;/code&gt; in ida:&lt;/p&gt;
