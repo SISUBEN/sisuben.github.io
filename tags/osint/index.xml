@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Osint on SISUBENY&#39;s Blog</title>
+        <link>https://sisuben.github.io/tags/osint/</link>
+        <description>Recent content in Osint on SISUBENY&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>SISUBENY</copyright>
+        <lastBuildDate>Fri, 28 Nov 2025 19:43:08 +0800</lastBuildDate><atom:link href="https://sisuben.github.io/tags/osint/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Misc] Cloudy Days</title>
+        <link>https://sisuben.github.io/p/misc-cloudy-days/</link>
+        <pubDate>Fri, 28 Nov 2025 19:43:08 +0800</pubDate>
+        
+        <guid>https://sisuben.github.io/p/misc-cloudy-days/</guid>
+        <description>&lt;h1 id=&#34;misccloudy-days&#34;&gt;misc/cloudy-days
+&lt;/h1&gt;&lt;h2 id=&#34;cloudy-days&#34;&gt;Cloudy Days
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/chall.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;chall&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;Solution
+&lt;/h2&gt;&lt;p&gt;​	First of all, we notice that the black poster and the blue poster is written in English and the traffic light is yellow so that the possible country is Canada or USA.&lt;img src=&#34;https://sisuben.github.io/image-20251002212825723.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20251002212825723&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/image-20251002212345873.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20251002212345873&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;​	Next, the one of useful information we can extract in the provide image is the road 99 bus.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/image-20251002210734702.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20251002210734702&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Therefore, search the bus on the google lens.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TransLink bus&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is the type of bus we want. Now we can see the bus is bit of unusual, this is called articulated buses, and, the bus line 99, so now we can search &amp;ldquo;Canada articulated bus line 99&amp;rdquo; and &amp;ldquo;USA articulated buses line 99&amp;rdquo;, then we can see the top result, 99 B-Line! Then we can see the route map in the wikipedia page!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/image.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;​	Now we can hop on to google map street view and see where the photo is taken from! It take some time for you to find, as we going from UBS exchange, we can see its a big downhill, which match the image we had, and keep following the bus route, when we are at around 2515 Alma St, Vancouver, BC V6R 3R8, Canada, which the coordinate is 49.26412297338073, -123.18594789221109, and face to EW, and we find the exact view! The big grey building matched, and the blue store next to it matched and the store in the lower left corner of the image matched too!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/asd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;asd&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;​	Then let&amp;rsquo;s we go back to the challenges photo. Look at the photo carefully, the POV of photo is smaller so the picture is zoomed. So that the correct coordinate is &lt;code&gt;49.2637_-123.1860&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Flag: &lt;code&gt;cuhk25ctf{49.2637_-123.1860}&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
