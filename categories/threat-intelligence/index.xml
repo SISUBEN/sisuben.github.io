@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Threat Intelligence on SISUBENY&#39;s Blog</title>
+        <link>https://sisuben.github.io/categories/threat-intelligence/</link>
+        <description>Recent content in Threat Intelligence on SISUBENY&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>SISUBENY</copyright>
+        <lastBuildDate>Fri, 12 Dec 2025 21:12:43 +0800</lastBuildDate><atom:link href="https://sisuben.github.io/categories/threat-intelligence/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[NullCTF Threat Intelligence] Slim Shady</title>
+        <link>https://sisuben.github.io/p/nullctf-threat-intelligence-slim-shady/</link>
+        <pubDate>Fri, 12 Dec 2025 21:12:43 +0800</pubDate>
+        
+        <guid>https://sisuben.github.io/p/nullctf-threat-intelligence-slim-shady/</guid>
+        <description>&lt;h1 id=&#34;threat-intelligence--slim-shady&#34;&gt;Threat Intelligence / Slim Shady
+&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Caution&lt;/strong&gt; ⚠️⚠️⚠️&lt;br&gt;
+This is a &lt;strong&gt;REAL MALWARE&lt;/strong&gt;.&lt;br&gt;
+PLEASE RUN IN A &lt;strong&gt;VIRTUAL MACHINE&lt;/strong&gt;.&lt;br&gt;
+IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;0x01-questions&#34;&gt;0x01 Questions
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;What user does the malware create?&lt;/li&gt;
+&lt;li&gt;What is the password of the created user by malware?&lt;/li&gt;
+&lt;li&gt;What persistence technique did the malware use?&lt;/li&gt;
+&lt;li&gt;What is the value of the registry key added by the malware?&lt;/li&gt;
+&lt;li&gt;What domain does the malware try to connect to?&lt;/li&gt;
+&lt;li&gt;In what process is it injecting information?&lt;/li&gt;
+&lt;li&gt;What is being injected?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;0x02-information-gathering&#34;&gt;0x02 Information Gathering
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/images/cd5d8e4b-2229-40a3-adcb-d388a30e8ebe.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;As we can see, the malware is written in C++ and is a 32-bit executable. Fortunately, the malware does not use a packer or loader to protect itself.&lt;/p&gt;
+&lt;h2 id=&#34;0x03-static-analysis&#34;&gt;0x03 Static Analysis
+&lt;/h2&gt;&lt;p&gt;Starting with the &lt;code&gt;main_entry()&lt;/code&gt; function, we can identify a suspicious function at &lt;code&gt;0x402390&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/images/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;
+&lt;em&gt;(Note: Function names have been renamed for clarity.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We can reconstruct the execution flow of the malware:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Anti-Debugger&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Calls &lt;code&gt;IsDebuggerPresent&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If a debugger is detected, execution aborts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Anti-Sandbox Behavior&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Waits until mouse movement is detected to delay execution in automated sandboxes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;User Distraction&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Opens a YouTube URL in the default browser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Drop Embedded Resource&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writes an embedded resource (ID &lt;code&gt;0x65&lt;/code&gt;) to:
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%TEMP%\vmware.log.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Marker Search and Payload Decoding&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scans the dropped file for the marker string: &lt;code&gt;hXJakl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;XOR-decodes bytes following the marker using key &lt;code&gt;0x7D&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Process Injection&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creates a hidden instance of &lt;code&gt;notepad.exe&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Allocates memory in the remote process and writes the decoded payload.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;System Information Collection&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collects host info (IP, Username, Locale, OS, Privileges, UUID).&lt;/li&gt;
+&lt;li&gt;Writes data to:
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%APPDATA%\goodies.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Persistence Establishment&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copies itself to:
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%TEMP%\NotShady.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Creates a Registry Run key:
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Value name: Shadiest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Backdoor Account Creation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creates a local user via &lt;code&gt;NetUserAdd&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Username&lt;/strong&gt;: &lt;code&gt;RealSlimShady1337&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Password&lt;/strong&gt;: &lt;code&gt;X0r3dS3crets!&lt;/code&gt; (Decrypted from &lt;code&gt;byte_423024&lt;/code&gt; using XOR key &lt;code&gt;0x55&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Exfiltration&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resolves C2 domain: &lt;code&gt;shadystealerconnect.tk&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Sends &lt;code&gt;goodies.txt&lt;/code&gt; via HTTP POST.&lt;/li&gt;
+&lt;li&gt;Host header: &lt;code&gt;shadystmalmronneoit.tk&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;static-analysis-findings&#34;&gt;Static Analysis Findings
+&lt;/h3&gt;&lt;p&gt;Based on the static analysis, we can answer several questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;1. What user does the malware create?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;RealSlimShady1337&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2. What is the password of the created user by malware?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;X0r3dS3crets!&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;5. What domain does the malware try to connect to?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;shadystealerconnect.tk&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;6. In what process is it injecting information?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;notepad.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x04-online-sandbox--dynamic-analysis&#34;&gt;0x04 Online Sandbox / Dynamic Analysis
+&lt;/h2&gt;&lt;p&gt;To verify findings and retrieve the injected content, I used the 360 Online Sandbox.&lt;/p&gt;
+&lt;h3 id=&#34;registry-activity&#34;&gt;Registry Activity
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/images/image1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The sandbox report confirms the malware modifies the registry for persistence.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/images/image2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This allows us to answer the persistence questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;3. What persistence technique did the malware use?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;T1547.001&lt;/code&gt; (Registry Run Keys / Startup Folder)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;4. What is the value of the registry key added by the malware?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Shadiest&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;memory-injection&#34;&gt;Memory Injection
+&lt;/h3&gt;&lt;p&gt;The report also highlights memory modification in another process.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/images/image3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Looking at the injected string in memory reveals the flag:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;7. What is being injected?&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FIN{50y0u41n7r34llysh4dy}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
