@@ -400,7 +400,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.</p>
 <li>What is being injected?</li>
 </ol>
 <h2 id="0x02-information-gathering">0x02 Information Gathering
-</h2><p><img src="https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/cd5d8e4b-2229-40a3-adcb-d388a30e8ebe.png"
+</h2><p><img src="https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/cd5d8e4b-2229-40a3-adcb-d388a30e8ebe.png"
 	
 	
 	
@@ -413,7 +413,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.</p>
 <p>As we can see, the malware is written in C++ and is a 32-bit executable. Fortunately, the malware does not use a packer or loader to protect itself.</p>
 <h2 id="0x03-static-analysis">0x03 Static Analysis
 </h2><p>Starting with the <code>main_entry()</code> function, we can identify a suspicious function at <code>0x402390</code>.</p>
-<p><img src="https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image.png"
+<p><img src="https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image.png"
 	
 	
 	
@@ -561,7 +561,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.</p>
 <h2 id="0x04-online-sandbox--dynamic-analysis">0x04 Online Sandbox / Dynamic Analysis
 </h2><p>To verify findings and retrieve the injected content, I used the 360 Online Sandbox.</p>
 <h3 id="registry-activity">Registry Activity
-</h3><p><img src="https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image1.png"
+</h3><p><img src="https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image1.png"
 	
 	
 	
@@ -572,7 +572,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.</p>
 	
 ></p>
 <p>The sandbox report confirms the malware modifies the registry for persistence.</p>
-<p><img src="https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image2.png"
+<p><img src="https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image2.png"
 	
 	
 	
@@ -597,7 +597,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.</p>
 </ul>
 <h3 id="memory-injection">Memory Injection
 </h3><p>The report also highlights memory modification in another process.</p>
-<p><img src="https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image3.png"
+<p><img src="https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image3.png"
 	
 	
 	

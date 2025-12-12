@@ -31,7 +31,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p
 &lt;li&gt;What is being injected?&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;0x02-information-gathering&#34;&gt;0x02 Information Gathering
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/cd5d8e4b-2229-40a3-adcb-d388a30e8ebe.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/cd5d8e4b-2229-40a3-adcb-d388a30e8ebe.png&#34;
 	
 	
 	
@@ -44,7 +44,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p
 &lt;p&gt;As we can see, the malware is written in C++ and is a 32-bit executable. Fortunately, the malware does not use a packer or loader to protect itself.&lt;/p&gt;
 &lt;h2 id=&#34;0x03-static-analysis&#34;&gt;0x03 Static Analysis
 &lt;/h2&gt;&lt;p&gt;Starting with the &lt;code&gt;main_entry()&lt;/code&gt; function, we can identify a suspicious function at &lt;code&gt;0x402390&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image.png&#34;
 	
 	
 	
@@ -192,7 +192,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p
 &lt;h2 id=&#34;0x04-online-sandbox--dynamic-analysis&#34;&gt;0x04 Online Sandbox / Dynamic Analysis
 &lt;/h2&gt;&lt;p&gt;To verify findings and retrieve the injected content, I used the 360 Online Sandbox.&lt;/p&gt;
 &lt;h3 id=&#34;registry-activity&#34;&gt;Registry Activity
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image1.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image1.png&#34;
 	
 	
 	
@@ -203,7 +203,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;The sandbox report confirms the malware modifies the registry for persistence.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image2.png&#34;
 	
 	
 	
@@ -228,7 +228,7 @@ IF YOU RUN THIS PROGRAM ON YOUR REAL PC, YOU MUST ACCEPT THE CONSEQUENCES.&lt;/p
 &lt;/ul&gt;
 &lt;h3 id=&#34;memory-injection&#34;&gt;Memory Injection
 &lt;/h3&gt;&lt;p&gt;The report also highlights memory modification in another process.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/hugo-main/refs/heads/main/content/post/nullctf2025/images/image3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/SISUBEN/sisuben.github.io/refs/heads/main/post/nullctf2025/images/image3.png&#34;
 	
 	
 	
