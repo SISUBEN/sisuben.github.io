@@ -722,7 +722,7 @@
 &lt;p&gt;So you do &lt;strong&gt;not&lt;/strong&gt; see full &lt;code&gt;t1, t2&lt;/code&gt;; you only see their high bits.
 That missing part becomes our “small unknown”.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;0x02-step-1-factor-rsa-and-decrypt-the-built-in-hint&#34;&gt;0x02 Step 1: Factor RSA and decrypt the built-in hint
+&lt;h2 id=&#34;0x02-factor-rsa-and-decrypt-the-built-in-hint&#34;&gt;0x02 Factor RSA and decrypt the built-in hint
 &lt;/h2&gt;&lt;p&gt;Because &lt;code&gt;q&lt;/code&gt; is only 25 bits, factoring &lt;code&gt;N&lt;/code&gt; is trivial by trial division / small prime search.&lt;/p&gt;
 &lt;p&gt;Once you factor:&lt;/p&gt;
 &lt;ul&gt;
@@ -761,41 +761,60 @@ That missing part becomes our “small unknown”.&lt;/p&gt;
 &lt;p&gt;This is exactly the “small root” situation.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;0x04-eliminate-the-flag-m-and-obtain-a-bivariate-modular-equation&#34;&gt;0x04 Eliminate the flag &lt;code&gt;m&lt;/code&gt; and obtain a bivariate modular equation
-&lt;/h2&gt;&lt;p&gt;We start from the definitions:&lt;/p&gt;
-&lt;p&gt;[
+&lt;/h2&gt;&lt;p&gt;We start from the definitions:
+&lt;/p&gt;
+$$
+[
 t_1 \equiv k(m+r_1)^{-1} \pmod p
 ]
 [
 t_2 \equiv k(m+r_2)^{-1} \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Rearrange both:&lt;/p&gt;
-&lt;p&gt;[
+]
+$$&lt;p&gt;
+Rearrange both:
+&lt;/p&gt;
+$$
+[
 (m+r_1)t_1 \equiv k \pmod p
 ]
 [
 (m+r_2)t_2 \equiv k \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Now eliminate &lt;code&gt;m&lt;/code&gt;. From the first:&lt;/p&gt;
-&lt;p&gt;[
+]
+$$&lt;p&gt;
+Now eliminate &lt;code&gt;m&lt;/code&gt;. From the first:
+&lt;/p&gt;
+$$
+[
 m \equiv kt_1^{-1} - r_1 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Plug into the second:&lt;/p&gt;
-&lt;p&gt;[
+]
+$$&lt;p&gt;
+Plug into the second:
+&lt;/p&gt;
+$$
+[
 (kt_1^{-1} - r_1 + r_2)t_2 \equiv k \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Multiply by &lt;code&gt;t1&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;[
+]
+$$&lt;p&gt;
+Multiply by &lt;code&gt;t1&lt;/code&gt;:
+&lt;/p&gt;
+$$
+[
 k t_2 + (r_2 - r_1)t_1 t_2 \equiv k t_1 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Bring all to one side:&lt;/p&gt;
-&lt;p&gt;[
+]
+$$&lt;p&gt;
+Bring all to one side:
+$$
+[
 (r_2-r_1)t_1t_2 + k(t_2 - t_1) \equiv 0 \pmod p
 ]&lt;/p&gt;
-&lt;p&gt;Now substitute &lt;code&gt;t1 = a1 + x&lt;/code&gt;, &lt;code&gt;t2 = a2 + y&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;[
+&lt;p&gt;Now substitute &lt;code&gt;t1 = a1 + x&lt;/code&gt;, &lt;code&gt;t2 = a2 + y&lt;/code&gt;:
+&lt;/p&gt;
+$$
+[
 F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;This is a &lt;strong&gt;bivariate polynomial congruence&lt;/strong&gt; with a small root &lt;code&gt;(x,y)&lt;/code&gt;.&lt;/p&gt;
+]
+$$&lt;p&gt;
+This is a &lt;strong&gt;bivariate polynomial congruence&lt;/strong&gt; with a small root &lt;code&gt;(x,y)&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;0x05-why-sage-small_roots-failed&#34;&gt;0x05 Why Sage &lt;code&gt;.small_roots()&lt;/code&gt; failed
 &lt;/h2&gt;&lt;p&gt;You got:&lt;/p&gt;
@@ -811,16 +830,19 @@ F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
 &lt;hr&gt;
 &lt;h2 id=&#34;6-step-5-simplify-the-polynomial-structure-bilinear-form&#34;&gt;6. Step 5: Simplify the polynomial structure (bilinear form)
 &lt;/h2&gt;&lt;p&gt;Expand &lt;code&gt;F(x,y)&lt;/code&gt; and collect terms in &lt;code&gt;(x,y)&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;It becomes:&lt;/p&gt;
-&lt;p&gt;[
+&lt;p&gt;It becomes:
+&lt;/p&gt;
+$$
+[
 f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Where:&lt;/p&gt;
+]
+$$&lt;p&gt;
+Where:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;(A = (r_2-r_1))&lt;/li&gt;
-&lt;li&gt;(B_x = A a_2 - k)&lt;/li&gt;
-&lt;li&gt;(B_y = A a_1 + k)&lt;/li&gt;
-&lt;li&gt;(C = A a_1 a_2 + k(a_2-a_1))&lt;/li&gt;
+&lt;li&gt;$$(A = (r_2-r_1))$$&lt;/li&gt;
+&lt;li&gt;$$(B_x = A a_2 - k)$$&lt;/li&gt;
+&lt;li&gt;$$(B_y = A a_1 + k)$$&lt;/li&gt;
+&lt;li&gt;$$(C = A a_1 a_2 + k(a_2-a_1))$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;(all taken mod &lt;code&gt;p&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;So it’s &lt;strong&gt;bilinear&lt;/strong&gt; (degree 2 but only via &lt;code&gt;x*y&lt;/code&gt;), which is friendly for lattice methods.&lt;/p&gt;
@@ -837,7 +859,7 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 &lt;li&gt;
 &lt;p&gt;Build many polynomials that vanish at the root modulo a high power of &lt;code&gt;p&lt;/code&gt;, e.g. terms like:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;(x^i y^j f(x,y)^k p^{m-k})&lt;/li&gt;
+&lt;li&gt;$$(x^i y^j f(x,y)^k p^{m-k})$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -859,12 +881,14 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 &lt;/h2&gt;&lt;p&gt;After recovering &lt;code&gt;x&lt;/code&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;t1 = a1 + x&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;from ((m+r_1)t_1 \equiv k \pmod p):&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;[
+&lt;li&gt;from $$((m+r_1)t_1 \equiv k \pmod p)$$:
+$$
+[
 m \equiv k t_1^{-1} - r_1 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.&lt;/p&gt;
+]
+$$
+Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;0x08-reference-implementation-sage&#34;&gt;0x08 Reference implementation (Sage)
 &lt;/h2&gt;&lt;p&gt;This is a complete “drop-in” solver pattern:&lt;/p&gt;

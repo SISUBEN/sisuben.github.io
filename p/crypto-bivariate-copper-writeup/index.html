@@ -282,7 +282,7 @@
   <ol>
     <li><a href="#0x00-attachment">0x00 Attachment</a></li>
     <li><a href="#0x01-basic-information">0x01 Basic Information</a></li>
-    <li><a href="#0x02-step-1-factor-rsa-and-decrypt-the-built-in-hint">0x02 Step 1: Factor RSA and decrypt the built-in hint</a></li>
+    <li><a href="#0x02-factor-rsa-and-decrypt-the-built-in-hint">0x02 Factor RSA and decrypt the built-in hint</a></li>
     <li><a href="#0x03-convert-leaks-into-known-high-bits--small-unknown">0x03 Convert leaks into “known high bits + small unknown”</a></li>
     <li><a href="#0x04-eliminate-the-flag-m-and-obtain-a-bivariate-modular-equation">0x04 Eliminate the flag <code>m</code> and obtain a bivariate modular equation</a></li>
     <li><a href="#0x05-why-sage-small_roots-failed">0x05 Why Sage <code>.small_roots()</code> failed</a></li>
@@ -510,7 +510,7 @@
 <p>So you do <strong>not</strong> see full <code>t1, t2</code>; you only see their high bits.
 That missing part becomes our “small unknown”.</p>
 <hr>
-<h2 id="0x02-step-1-factor-rsa-and-decrypt-the-built-in-hint">0x02 Step 1: Factor RSA and decrypt the built-in hint
+<h2 id="0x02-factor-rsa-and-decrypt-the-built-in-hint">0x02 Factor RSA and decrypt the built-in hint
 </h2><p>Because <code>q</code> is only 25 bits, factoring <code>N</code> is trivial by trial division / small prime search.</p>
 <p>Once you factor:</p>
 <ul>
@@ -549,41 +549,60 @@ That missing part becomes our “small unknown”.</p>
 <p>This is exactly the “small root” situation.</p>
 <hr>
 <h2 id="0x04-eliminate-the-flag-m-and-obtain-a-bivariate-modular-equation">0x04 Eliminate the flag <code>m</code> and obtain a bivariate modular equation
-</h2><p>We start from the definitions:</p>
-<p>[
+</h2><p>We start from the definitions:
+</p>
+$$
+[
 t_1 \equiv k(m+r_1)^{-1} \pmod p
 ]
 [
 t_2 \equiv k(m+r_2)^{-1} \pmod p
-]</p>
-<p>Rearrange both:</p>
-<p>[
+]
+$$<p>
+Rearrange both:
+</p>
+$$
+[
 (m+r_1)t_1 \equiv k \pmod p
 ]
 [
 (m+r_2)t_2 \equiv k \pmod p
-]</p>
-<p>Now eliminate <code>m</code>. From the first:</p>
-<p>[
+]
+$$<p>
+Now eliminate <code>m</code>. From the first:
+</p>
+$$
+[
 m \equiv kt_1^{-1} - r_1 \pmod p
-]</p>
-<p>Plug into the second:</p>
-<p>[
+]
+$$<p>
+Plug into the second:
+</p>
+$$
+[
 (kt_1^{-1} - r_1 + r_2)t_2 \equiv k \pmod p
-]</p>
-<p>Multiply by <code>t1</code>:</p>
-<p>[
+]
+$$<p>
+Multiply by <code>t1</code>:
+</p>
+$$
+[
 k t_2 + (r_2 - r_1)t_1 t_2 \equiv k t_1 \pmod p
-]</p>
-<p>Bring all to one side:</p>
-<p>[
+]
+$$<p>
+Bring all to one side:
+$$
+[
 (r_2-r_1)t_1t_2 + k(t_2 - t_1) \equiv 0 \pmod p
 ]</p>
-<p>Now substitute <code>t1 = a1 + x</code>, <code>t2 = a2 + y</code>:</p>
-<p>[
+<p>Now substitute <code>t1 = a1 + x</code>, <code>t2 = a2 + y</code>:
+</p>
+$$
+[
 F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
-]</p>
-<p>This is a <strong>bivariate polynomial congruence</strong> with a small root <code>(x,y)</code>.</p>
+]
+$$<p>
+This is a <strong>bivariate polynomial congruence</strong> with a small root <code>(x,y)</code>.</p>
 <hr>
 <h2 id="0x05-why-sage-small_roots-failed">0x05 Why Sage <code>.small_roots()</code> failed
 </h2><p>You got:</p>
@@ -599,16 +618,19 @@ F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
 <hr>
 <h2 id="6-step-5-simplify-the-polynomial-structure-bilinear-form">6. Step 5: Simplify the polynomial structure (bilinear form)
 </h2><p>Expand <code>F(x,y)</code> and collect terms in <code>(x,y)</code>:</p>
-<p>It becomes:</p>
-<p>[
+<p>It becomes:
+</p>
+$$
+[
 f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
-]</p>
-<p>Where:</p>
+]
+$$<p>
+Where:</p>
 <ul>
-<li>(A = (r_2-r_1))</li>
-<li>(B_x = A a_2 - k)</li>
-<li>(B_y = A a_1 + k)</li>
-<li>(C = A a_1 a_2 + k(a_2-a_1))</li>
+<li>$$(A = (r_2-r_1))$$</li>
+<li>$$(B_x = A a_2 - k)$$</li>
+<li>$$(B_y = A a_1 + k)$$</li>
+<li>$$(C = A a_1 a_2 + k(a_2-a_1))$$</li>
 </ul>
 <p>(all taken mod <code>p</code>)</p>
 <p>So it’s <strong>bilinear</strong> (degree 2 but only via <code>x*y</code>), which is friendly for lattice methods.</p>
@@ -625,7 +647,7 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 <li>
 <p>Build many polynomials that vanish at the root modulo a high power of <code>p</code>, e.g. terms like:</p>
 <ul>
-<li>(x^i y^j f(x,y)^k p^{m-k})</li>
+<li>$$(x^i y^j f(x,y)^k p^{m-k})$$</li>
 </ul>
 </li>
 <li>
@@ -647,12 +669,14 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 </h2><p>After recovering <code>x</code>:</p>
 <ul>
 <li><code>t1 = a1 + x</code></li>
-<li>from ((m+r_1)t_1 \equiv k \pmod p):</li>
-</ul>
-<p>[
+<li>from $$((m+r_1)t_1 \equiv k \pmod p)$$:
+$$
+[
 m \equiv k t_1^{-1} - r_1 \pmod p
-]</p>
-<p>Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.</p>
+]
+$$
+Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.</li>
+</ul>
 <hr>
 <h2 id="0x08-reference-implementation-sage">0x08 Reference implementation (Sage)
 </h2><p>This is a complete “drop-in” solver pattern:</p>
