@@ -825,10 +825,10 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 ]
 $$&lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$$(A = (r_2-r_1))$$&lt;/li&gt;
-&lt;li&gt;$$(B_x = A a_2 - k)$$&lt;/li&gt;
-&lt;li&gt;$$(B_y = A a_1 + k)$$&lt;/li&gt;
-&lt;li&gt;$$(C = A a_1 a_2 + k(a_2-a_1))$$&lt;/li&gt;
+&lt;li&gt;$$ (A = (r_2-r_1)) $$&lt;/li&gt;
+&lt;li&gt;$$ (B_x = A a_2 - k) $$&lt;/li&gt;
+&lt;li&gt;$$ (B_y = A a_1 + k) $$&lt;/li&gt;
+&lt;li&gt;$$ (C = A a_1 a_2 + k(a_2-a_1)) $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;(all taken mod &lt;code&gt;p&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;So it’s &lt;strong&gt;bilinear&lt;/strong&gt; (degree 2 but only via &lt;code&gt;x*y&lt;/code&gt;), which is friendly for lattice methods.&lt;/p&gt;
@@ -845,7 +845,7 @@ $$&lt;p&gt;Where:&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;Build many polynomials that vanish at the root modulo a high power of &lt;code&gt;p&lt;/code&gt;, e.g. terms like:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$$(x^i y^j f(x,y)^k p^{m-k})$$&lt;/li&gt;
+&lt;li&gt;$$ (x^i y^j f(x,y)^k p^{m-k}) $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -867,14 +867,14 @@ $$&lt;p&gt;Where:&lt;/p&gt;
 &lt;/h2&gt;&lt;p&gt;After recovering &lt;code&gt;x&lt;/code&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;t1 = a1 + x&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;from $$((m+r_1)t_1 \equiv k \pmod p)$$:
+&lt;li&gt;from $$((m+r_1)t_1 \equiv k \pmod p)$$ :
 $$
 [
 m \equiv k t_1^{-1} - r_1 \pmod p
 ]
-$$
-Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.&lt;/li&gt;
+$$&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;0x08-reference-implementation-sage&#34;&gt;0x08 Reference implementation (Sage)
 &lt;/h2&gt;&lt;p&gt;This is a complete “drop-in” solver pattern:&lt;/p&gt;

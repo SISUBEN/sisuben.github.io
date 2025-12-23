@@ -612,10 +612,10 @@ f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 ]
 $$<p>Where:</p>
 <ul>
-<li>$$(A = (r_2-r_1))$$</li>
-<li>$$(B_x = A a_2 - k)$$</li>
-<li>$$(B_y = A a_1 + k)$$</li>
-<li>$$(C = A a_1 a_2 + k(a_2-a_1))$$</li>
+<li>$$ (A = (r_2-r_1)) $$</li>
+<li>$$ (B_x = A a_2 - k) $$</li>
+<li>$$ (B_y = A a_1 + k) $$</li>
+<li>$$ (C = A a_1 a_2 + k(a_2-a_1)) $$</li>
 </ul>
 <p>(all taken mod <code>p</code>)</p>
 <p>So it’s <strong>bilinear</strong> (degree 2 but only via <code>x*y</code>), which is friendly for lattice methods.</p>
@@ -632,7 +632,7 @@ $$<p>Where:</p>
 <li>
 <p>Build many polynomials that vanish at the root modulo a high power of <code>p</code>, e.g. terms like:</p>
 <ul>
-<li>$$(x^i y^j f(x,y)^k p^{m-k})$$</li>
+<li>$$ (x^i y^j f(x,y)^k p^{m-k}) $$</li>
 </ul>
 </li>
 <li>
@@ -654,14 +654,14 @@ $$<p>Where:</p>
 </h2><p>After recovering <code>x</code>:</p>
 <ul>
 <li><code>t1 = a1 + x</code></li>
-<li>from $$((m+r_1)t_1 \equiv k \pmod p)$$:
+<li>from $$((m+r_1)t_1 \equiv k \pmod p)$$ :
 $$
 [
 m \equiv k t_1^{-1} - r_1 \pmod p
 ]
-$$
-Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.</li>
+$$</li>
 </ul>
+<p>Since the flag integer is small (a typical CTF string), the residue corresponds directly to the plaintext bytes.</p>
 <hr>
 <h2 id="0x08-reference-implementation-sage">0x08 Reference implementation (Sage)
 </h2><p>This is a complete “drop-in” solver pattern:</p>
