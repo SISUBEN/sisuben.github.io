@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>SISUBENY</copyright>
         <lastBuildDate>Thu, 27 Nov 2025 01:10:43 +0800</lastBuildDate><atom:link href="https://sisuben.github.io/categories/reverse/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>[PCTF2025 Rev] Entropy Discord</title>
-        <link>https://sisuben.github.io/p/pctf2025-rev-entropy-discord/</link>
+        <title>[RE] Entropy Discord</title>
+        <link>https://sisuben.github.io/p/re-entropy-discord/</link>
         <pubDate>Thu, 27 Nov 2025 01:10:43 +0800</pubDate>
         
-        <guid>https://sisuben.github.io/p/pctf2025-rev-entropy-discord/</guid>
+        <guid>https://sisuben.github.io/p/re-entropy-discord/</guid>
         <description>&lt;h1 id=&#34;rev---entropy-discord&#34;&gt;rev - Entropy Discord
 &lt;/h1&gt;&lt;h2 id=&#34;0x01-basic-info&#34;&gt;0x01 Basic Info
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -546,11 +546,11 @@ else fail.
 </description>
         </item>
         <item>
-        <title>rev/questionably-distributed</title>
-        <link>https://sisuben.github.io/p/rev/questionably-distributed/</link>
+        <title>[RE] Questionably Distributed</title>
+        <link>https://sisuben.github.io/p/re-questionably-distributed/</link>
         <pubDate>Sun, 21 Sep 2025 17:56:23 +0800</pubDate>
         
-        <guid>https://sisuben.github.io/p/rev/questionably-distributed/</guid>
+        <guid>https://sisuben.github.io/p/re-questionably-distributed/</guid>
         <description>&lt;h1 id=&#34;revquestionably-distributed&#34;&gt;rev/questionably-distributed
 &lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1595,7 +1595,7 @@ else fail.
 </description>
         </item>
         <item>
-        <title>[Re] Rechall Writeup</title>
+        <title>[RE] Rechall Writeup</title>
         <link>https://sisuben.github.io/p/re-rechall-writeup/</link>
         <pubDate>Sun, 27 Apr 2025 19:35:37 +0800</pubDate>
         
