@@ -285,8 +285,7 @@
     <li><a href="#0x02-factor-rsa-and-decrypt-the-built-in-hint">0x02 Factor RSA and decrypt the built-in hint</a></li>
     <li><a href="#0x03-convert-leaks-into-known-high-bits--small-unknown">0x03 Convert leaks into “known high bits + small unknown”</a></li>
     <li><a href="#0x04-eliminate-the-flag-m-and-obtain-a-bivariate-modular-equation">0x04 Eliminate the flag <code>m</code> and obtain a bivariate modular equation</a></li>
-    <li><a href="#0x05-why-sage-small_roots-failed">0x05 Why Sage <code>.small_roots()</code> failed</a></li>
-    <li><a href="#6-step-5-simplify-the-polynomial-structure-bilinear-form">6. Step 5: Simplify the polynomial structure (bilinear form)</a></li>
+    <li><a href="#0x05-simplify-the-polynomial-structure-bilinear-form">0x05 Simplify the polynomial structure (bilinear form)</a></li>
     <li><a href="#0x06-bivariate-coppersmith-idea-high-level">0x06 Bivariate Coppersmith idea (high-level)</a></li>
     <li><a href="#0x07-solve-for-the-flag-once-xy-is-found">0x07 Solve for the flag once <code>(x,y)</code> is found</a></li>
     <li><a href="#0x08-reference-implementation-sage">0x08 Reference implementation (Sage)</a></li>
@@ -591,32 +590,19 @@ k t_2 + (r_2 - r_1)t_1 t_2 \equiv k t_1 \pmod p
 ]
 $$<p>
 Bring all to one side:
+</p>
 $$
 [
 (r_2-r_1)t_1t_2 + k(t_2 - t_1) \equiv 0 \pmod p
-]</p>
-<p>Now substitute <code>t1 = a1 + x</code>, <code>t2 = a2 + y</code>:
-</p>
+]
+$$<p>Now substitute <code>t1 = a1 + x</code>, <code>t2 = a2 + y</code>:</p>
 $$
 [
 F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
 ]
-$$<p>
-This is a <strong>bivariate polynomial congruence</strong> with a small root <code>(x,y)</code>.</p>
+$$<p>This is a <strong>bivariate polynomial congruence</strong> with a small root <code>(x,y)</code>.</p>
 <hr>
-<h2 id="0x05-why-sage-small_roots-failed">0x05 Why Sage <code>.small_roots()</code> failed
-</h2><p>You got:</p>
-<blockquote>
-<p><code>AttributeError: ... MPolynomial_libsingular has no attribute 'small_roots'</code></p>
-</blockquote>
-<p>Because:</p>
-<ul>
-<li><code>F(x,y)</code> is a <strong>multivariate polynomial</strong></li>
-<li>Sage’s <code>small_roots()</code> method exists for certain <strong>univariate</strong> polynomial types (mostly NTL-backed), not for libsingular multivariate types.</li>
-</ul>
-<p>So we must implement <strong>bivariate Coppersmith</strong> ourselves via a lattice + LLL.</p>
-<hr>
-<h2 id="6-step-5-simplify-the-polynomial-structure-bilinear-form">6. Step 5: Simplify the polynomial structure (bilinear form)
+<h2 id="0x05-simplify-the-polynomial-structure-bilinear-form">0x05 Simplify the polynomial structure (bilinear form)
 </h2><p>Expand <code>F(x,y)</code> and collect terms in <code>(x,y)</code>:</p>
 <p>It becomes:
 </p>
@@ -624,8 +610,7 @@ $$
 [
 f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 ]
-$$<p>
-Where:</p>
+$$<p>Where:</p>
 <ul>
 <li>$$(A = (r_2-r_1))$$</li>
 <li>$$(B_x = A a_2 - k)$$</li>

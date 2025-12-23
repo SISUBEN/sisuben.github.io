@@ -227,32 +227,19 @@ k t_2 + (r_2 - r_1)t_1 t_2 \equiv k t_1 \pmod p
 ]
 $$&lt;p&gt;
 Bring all to one side:
+&lt;/p&gt;
 $$
 [
 (r_2-r_1)t_1t_2 + k(t_2 - t_1) \equiv 0 \pmod p
-]&lt;/p&gt;
-&lt;p&gt;Now substitute &lt;code&gt;t1 = a1 + x&lt;/code&gt;, &lt;code&gt;t2 = a2 + y&lt;/code&gt;:
-&lt;/p&gt;
+]
+$$&lt;p&gt;Now substitute &lt;code&gt;t1 = a1 + x&lt;/code&gt;, &lt;code&gt;t2 = a2 + y&lt;/code&gt;:&lt;/p&gt;
 $$
 [
 F(x,y)=(r_2-r_1)(a_1+x)(a_2+y) + k((a_2+y)-(a_1+x)) \equiv 0 \pmod p
 ]
-$$&lt;p&gt;
-This is a &lt;strong&gt;bivariate polynomial congruence&lt;/strong&gt; with a small root &lt;code&gt;(x,y)&lt;/code&gt;.&lt;/p&gt;
+$$&lt;p&gt;This is a &lt;strong&gt;bivariate polynomial congruence&lt;/strong&gt; with a small root &lt;code&gt;(x,y)&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;0x05-why-sage-small_roots-failed&#34;&gt;0x05 Why Sage &lt;code&gt;.small_roots()&lt;/code&gt; failed
-&lt;/h2&gt;&lt;p&gt;You got:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;AttributeError: ... MPolynomial_libsingular has no attribute &#39;small_roots&#39;&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Because:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;F(x,y)&lt;/code&gt; is a &lt;strong&gt;multivariate polynomial&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Sage’s &lt;code&gt;small_roots()&lt;/code&gt; method exists for certain &lt;strong&gt;univariate&lt;/strong&gt; polynomial types (mostly NTL-backed), not for libsingular multivariate types.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;So we must implement &lt;strong&gt;bivariate Coppersmith&lt;/strong&gt; ourselves via a lattice + LLL.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;6-step-5-simplify-the-polynomial-structure-bilinear-form&#34;&gt;6. Step 5: Simplify the polynomial structure (bilinear form)
+&lt;h2 id=&#34;0x05-simplify-the-polynomial-structure-bilinear-form&#34;&gt;0x05 Simplify the polynomial structure (bilinear form)
 &lt;/h2&gt;&lt;p&gt;Expand &lt;code&gt;F(x,y)&lt;/code&gt; and collect terms in &lt;code&gt;(x,y)&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;It becomes:
 &lt;/p&gt;
@@ -260,8 +247,7 @@ $$
 [
 f(x,y) = Axy + B_x x + B_y y + C \equiv 0 \pmod p
 ]
-$$&lt;p&gt;
-Where:&lt;/p&gt;
+$$&lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$$(A = (r_2-r_1))$$&lt;/li&gt;
 &lt;li&gt;$$(B_x = A a_2 - k)$$&lt;/li&gt;
