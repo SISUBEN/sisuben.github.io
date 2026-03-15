@@ -21,8 +21,10 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://sisuben.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;Hello, I am SISUBENY a passionate developer and cybersecurity researcher from Hong Kong.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m moving my blog to astro. You can still browse here, but no longer update.&lt;/p&gt;
+        <description>&lt;p&gt;你好！我是 SISUBENY。很高兴认识你！&lt;/p&gt;
+&lt;p&gt;我是一名来自香港、充满热情的开发者和 CTF 选手，主攻方向是 RE/PWN。同时，我也是一名后端开发者。我从 2025 年 7 月开始接触 CTF，所以现在仍然每天都在不断探索和学习。&lt;/p&gt;
+&lt;p&gt;我正在把我的博客迁移到 Astro。你仍然可以继续浏览这里。&lt;/p&gt;
+&lt;p&gt;新博客：https://my-blog-pure-c1nt.vercel.app/&lt;/p&gt;
 </description>
         </item>
         <item>
