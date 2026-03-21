@@ -11,7 +11,7 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-cn"
+                hreflang="en-us"
                 href="https://sisuben.github.io/"
                 />
   </url><url>
@@ -27,7 +27,7 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-cn"
+                hreflang="en-us"
                 href="https://sisuben.github.io/categories/"
                 />
   </url><url>
@@ -55,21 +55,12 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-cn"
+                hreflang="en-us"
                 href="https://sisuben.github.io/tags/"
                 />
   </url><url>
     <loc>https://sisuben.github.io/p/pwn-secure-communication/</loc>
     <lastmod>2026-03-15T19:02:07+08:00</lastmod>
-  </url><url>
-    <loc>https://sisuben.github.io/categories/diary/</loc>
-    <lastmod>2026-03-03T23:44:30+08:00</lastmod>
-  </url><url>
-    <loc>https://sisuben.github.io/p/hkcert-ctf-final-2025-blog/</loc>
-    <lastmod>2026-03-03T23:44:30+08:00</lastmod>
-  </url><url>
-    <loc>https://sisuben.github.io/tags/hkcert25-final/</loc>
-    <lastmod>2026-03-03T23:44:30+08:00</lastmod>
   </url><url>
     <loc>https://sisuben.github.io/p/misc-suspicious-file-writeup/</loc>
     <lastmod>2025-12-23T21:18:09+08:00</lastmod>
