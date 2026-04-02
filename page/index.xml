@@ -7,8 +7,31 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>SISUBENY</copyright>
-        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://sisuben.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>归档</title>
+        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://sisuben.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About</title>
+        <link>https://sisuben.github.io/about/</link>
+        <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sisuben.github.io/about/</guid>
+        <description>&lt;p&gt;Hello! I’m SISUBENY. Nice to meet you!&lt;/p&gt;
+&lt;p&gt;I am a passionate developer and CTF player from Hong Kong. My main category is RE/PWN. I am also a back-end developer. I started my CTF journey in July 2025, so I am still exploring and learning every day.&lt;/p&gt;
+&lt;p&gt;I enjoy making useless projects simply because they make me happy :P.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m moving my blog to astro. You can still browse here.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Hello, World!&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;你好，世界！&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;Привет, мир!&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;こんにちは世界！&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;Hallo, Welt!&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;Bonjour à toi, monde!&lt;/strong&gt;&lt;/em&gt;
+&lt;em&gt;&lt;strong&gt;See You Tomorrow!&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;New blog: &lt;a class=&#34;link&#34; href=&#34;https://my-blog-pure-c1nt.vercel.app/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://my-blog-pure-c1nt.vercel.app/&lt;/a&gt;
+&lt;em&gt;still developing&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Archives</title>
         <link>https://sisuben.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
@@ -16,27 +39,15 @@
         <description></description>
         </item>
         <item>
-        <title>关于</title>
-        <link>https://sisuben.github.io/%E5%85%B3%E4%BA%8E/</link>
+        <title>Links</title>
+        <link>https://sisuben.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://sisuben.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;你好！我是 SISUBENY。很高兴认识你！&lt;/p&gt;
-&lt;p&gt;我是一名来自香港、充满热情的开发者和 CTF 选手，主攻方向是 RE/PWN。同时，我也是一名后端开发者。我从 2025 年 7 月开始接触 CTF，所以现在仍然每天都在不断探索和学习。&lt;/p&gt;
-&lt;p&gt;我正在把我的博客迁移到 Astro。你仍然可以继续浏览这里。&lt;/p&gt;
-&lt;p&gt;新博客：https://my-blog-pure-c1nt.vercel.app/&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>链接</title>
-        <link>https://sisuben.github.io/%E9%93%BE%E6%8E%A5/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://sisuben.github.io/%E9%93%BE%E6%8E%A5/</guid>
+        <guid>https://sisuben.github.io/links/</guid>
         <description></description>
         </item>
         <item>
-        <title>搜索</title>
+        <title>Search</title>
         <link>https://sisuben.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
