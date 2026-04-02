@@ -15,7 +15,8 @@
         <guid>https://sisuben.github.io/p/pwn-secure-communication-advanced/</guid>
         <description>&lt;h1 id=&#34;secure-communication-advanced&#34;&gt;Secure Communication (Advanced)
 &lt;/h1&gt;&lt;h2 id=&#34;0x00-basic-informations&#34;&gt;0x00 Basic Informations
-&lt;/h2&gt;&lt;p&gt;View notion version: (Notion)[https://www.notion.so/Secure-Communication-Advanced-3232b1b05cc68007b237c0a2a76ddc20?source=copy_link]&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;View notion version: &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.notion.so/Secure-Communication-Advanced-3232b1b05cc68007b237c0a2a76ddc20?source=copy_link&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Notion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;attachment&#34;&gt;Attachment
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1535,7 +1536,8 @@ the server prints its public key, the client submits its own public key, and all
         
         <guid>https://sisuben.github.io/p/pwn-secure-communication/</guid>
         <description>&lt;p&gt;I literally spent about 6 hours on this challenge sob and eventually solved it with my teammates.&lt;/p&gt;
-&lt;p&gt;View notion version: (Notion)[https://www.notion.so/Secure-Communication-3222b1b05cc6807385e9e2cd2f4798a1?source=copy_link]&lt;/p&gt;
+&lt;p&gt;View notion version: &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.notion.so/Secure-Communication-3222b1b05cc6807385e9e2cd2f4798a1?source=copy_link&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Notion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;0x00-basic-informations&#34;&gt;0x00 Basic Informations
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Attachment: &lt;code&gt;chall&lt;/code&gt;&lt;/li&gt;
