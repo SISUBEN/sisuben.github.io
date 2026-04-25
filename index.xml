@@ -6877,8 +6877,51 @@ else fail.
         
         <guid>https://sisuben.github.io/about/</guid>
         <description>&lt;p&gt;Hello! I’m SISUBENY. Nice to meet you!&lt;/p&gt;
-&lt;p&gt;I am a passionate developer and CTF player from Hong Kong. My main category is RE/PWN. I am also a back-end developer.&lt;/p&gt;
+&lt;p&gt;I am a passionate developer and CTF player from Hong Kong. My main category is RE/PWN. I am also a back-end developer and a binary security researcher.&lt;/p&gt;
 &lt;p&gt;I enjoy making useless projects simply because they make me happy :P.&lt;/p&gt;
+&lt;h2 id=&#34;achievements&#34;&gt;Achievements
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Date&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Event&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Ranking&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Team&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2025-09-26&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;網絡攻防精英培訓暨攻防大賽 2025&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;#2 &amp;amp; #6&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;潙哬縂湜岥解芣閞沵哋杺 / 粉嶺救安全恩有我們&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2025-12-19&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CUHK CTF 2025&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;#3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;F1r3fly&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2026-01-06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;HKCERT CTF 2025 Qualifying&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;#1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;S0551 - Fanling Kau Yan College&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2026-03-06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;HKCERT CTF 2025 Final&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;#4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;S0551 - Fanling Kau Yan College&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2026-03-06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PolyU x NuttyShell Cybersecurity CTF 2026&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;#3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;U060_hello world has been taken&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </description>
         </item>
         <item>
