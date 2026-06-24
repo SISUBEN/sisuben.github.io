@@ -35,7 +35,7 @@ E.g. (in random order):&lt;/p&gt;
 &lt;h1 id=&#34;challenge&#34;&gt;Challenge
 &lt;/h1&gt;&lt;p&gt;OK, OK. I know you guys also use AI to solve challenges and write writeups, but hey, I’d say it&amp;rsquo;s totally fair game (&lt;del&gt;cuz I also use AI to author challenges :P&lt;/del&gt;). Now, lez reveal the first myth.&lt;/p&gt;
 &lt;h2 id=&#34;the-k7-in-the-flag&#34;&gt;The &amp;ldquo;K7&amp;rdquo; in The Flag
-&lt;/h2&gt;&lt;p&gt;The flag is &lt;code&gt;THEM?!{0LD_T4P3_N3V3R_D1E5K7}&lt;/code&gt;.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;The flag is &lt;code&gt;THEMCTF?!{0LD_T4P3_N3V3R_D1E5K7}&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;I bet most of you guys were wondering, &amp;ldquo;What the hell does &lt;code&gt;K7&lt;/code&gt; even mean???&amp;rdquo; right?
 Like, &lt;code&gt;OLD TAPE NEVER DIES&lt;/code&gt; makes total sense, but &lt;code&gt;K7 &amp;lt;- ???&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;I noticed that most writeups claimed &lt;code&gt;K7&lt;/code&gt; is French slang for &amp;ldquo;cassette&amp;rdquo; (ka-sept $\rightarrow$ cassette).
