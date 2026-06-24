@@ -7,7 +7,67 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>SISUBENY</copyright>
-        <lastBuildDate>Sun, 15 Mar 2026 19:02:12 +0800</lastBuildDate><atom:link href="https://sisuben.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 25 Jun 2026 03:50:32 +0800</lastBuildDate><atom:link href="https://sisuben.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Rev] Old Cassette (Author talk)</title>
+        <link>https://sisuben.github.io/p/rev-old-cassette-author-talk/</link>
+        <pubDate>Thu, 25 Jun 2026 03:50:32 +0800</pubDate>
+        
+        <guid>https://sisuben.github.io/p/rev-old-cassette-author-talk/</guid>
+        <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h1&gt;&lt;p&gt;Uhmmm&amp;hellip; It’s been a long time since I last touched any CTF stuff. The last time I played was back in THEMCTF v2.&lt;/p&gt;
+&lt;p&gt;I also contributed some challenges to it (thanks for the opportunity, BTW! XD) including a bunch of, well, &lt;del&gt;sh1t challenges&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;Apart from those &lt;del&gt;sh1t challenges&lt;/del&gt;, I really want to talk about &lt;code&gt;Rev/Old Cassette&lt;/code&gt;. (Sorry for taking forever to release the author&amp;rsquo;s writeup! QAQ)&lt;/p&gt;
+&lt;p&gt;Lastly, I also saw some GOATED writeups from other players!!!
+E.g. (in random order):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://advaybagaria.github.io/Old_Cassette/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://advaybagaria.github.io/Old_Cassette/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://advaybagaria.github.io/old_cassette_/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://advaybagaria.github.io/old_cassette_/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/AdvayBagaria/Old_Cassette&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/AdvayBagaria/Old_Cassette&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Abdelkad3r/themectf-2026/tree/main/rev/old-cassette&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Abdelkad3r/themectf-2026/tree/main/rev/old-cassette&lt;/a&gt;
+&lt;em&gt;(If I missed yours, please contact &lt;a class=&#34;link&#34; href=&#34;mailto:admin@sisubeny.space&#34; &gt;admin@sisubeny.space&lt;/a&gt; to get it added!)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Annnd, I noticed that many players actually chose &lt;code&gt;Rev/Old Cassette&lt;/code&gt; for their writeups and submitted them to the writeup contest. (I&amp;rsquo;m so happy sob) That’s another major reason why I really wanted to write this blog lol&lt;/p&gt;
+&lt;p&gt;Uhmmm&amp;hellip; I think this challenge is just an entry-level reverse engineering challenge, and honestly, some of the players&amp;rsquo; writeups are even better than I expected. So, if you are looking for a sophisticated or perfect writeup, please check out the references above.&lt;/p&gt;
+&lt;h1 id=&#34;challenge&#34;&gt;Challenge
+&lt;/h1&gt;&lt;p&gt;OK, OK. I know you guys also use AI to solve challenges and write writeups, but hey, I’d say it&amp;rsquo;s totally fair game (&lt;del&gt;cuz I also use AI to author challenges :P&lt;/del&gt;). Now, lez reveal the first myth.&lt;/p&gt;
+&lt;h2 id=&#34;the-k7-in-the-flag&#34;&gt;The &amp;ldquo;K7&amp;rdquo; in The Flag
+&lt;/h2&gt;&lt;p&gt;The flag is &lt;code&gt;THEM?!{0LD_T4P3_N3V3R_D1E5K7}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I bet most of you guys were wondering, &amp;ldquo;What the hell does &lt;code&gt;K7&lt;/code&gt; even mean???&amp;rdquo; right?
+Like, &lt;code&gt;OLD TAPE NEVER DIES&lt;/code&gt; makes total sense, but &lt;code&gt;K7 &amp;lt;- ???&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I noticed that most writeups claimed &lt;code&gt;K7&lt;/code&gt; is French slang for &amp;ldquo;cassette&amp;rdquo; (ka-sept $\rightarrow$ cassette).
+However guys, I think you over-thought this one. It was literally just two randomly typed characters to fulfill the 32-byte flag length requirement lmfao&lt;/p&gt;
+&lt;h2 id=&#34;about-the-challenge&#34;&gt;About the Challenge
+&lt;/h2&gt;&lt;p&gt;This challenge adopted CHIP-8 as the target architecture because:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CHIP-8 is an interpreted programming language,
+developed by Joseph Weisbecker on his 1802
+microprocessor.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://sisuben.github.io/image.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Which 100% fits the background story. (So guys, remember to read the challenge description :)&lt;/p&gt;
+&lt;p&gt;Another reason I chose this language is that it&amp;rsquo;s widely known. You know how Modern Rev is often heavily combined with OSINT, right? Especially for this kind of customized VM challenge.&lt;/p&gt;
+&lt;h2 id=&#34;the-catch-the-math&#34;&gt;The Catch (The Math)
+&lt;/h2&gt;&lt;p&gt;Now, here comes the craziest part of the challenge: a grand total of 17,524,898,219,365 iterations.
+If you run it at a speed of 100,000,000 iterations/sec, it would take about 2 days to recover the whole flag by brute force.
+But I believe that under the assistance of AI (or some smart optimization), you guys recovered it much faster :)&lt;/p&gt;
+&lt;p&gt;To be completely honest, I didn&amp;rsquo;t know what else to write in this specific blog post. This challenge is built on quite a few clichés like unoptimized VM, PRNG, custom encryption ts yk, the typical rev challenge&lt;/p&gt;
+&lt;p&gt;Actually, I came up with the idea for this challenge a long time ago but never deployed it in any public CTF. THEMCTF was its world premiere. Hope you enjoyed it!&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>[PWN] Secure Communication (Advanced)</title>
         <link>https://sisuben.github.io/p/pwn-secure-communication-advanced/</link>
         <pubDate>Sun, 15 Mar 2026 19:02:12 +0800</pubDate>
